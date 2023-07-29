@@ -24,7 +24,6 @@
 }
 
 .bundleColumn {
-  background: lime;
   display: block;
   flex: 1;
   margin-top: 8px;

@@ -1,0 +1,12 @@
+.card {
+  display: flex;
+}
+
+.cardImageWrapper {
+  position: relative;
+}
+
+.cardImage {
+  height: 100px;
+  width: 100%;
+}

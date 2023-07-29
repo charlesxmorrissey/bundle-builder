@@ -1,17 +1,21 @@
+import { memo, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ProductCard } from 'components/Molecules/ProductCard'
 import { BundleList } from 'components/Organisms/BundleList'
 import { useProductsContext } from 'hooks'
 import { Product, ProductActionTypes } from 'types'
+import type { BundleItem } from 'types'
 
 import styles from './BundleBuilder.module.css'
 
-export const BundleBuilder = () => {
-  const { dispatch, state } = useProductsContext()
-  const { productTypes } = state
+const MemoizedProductCard = memo(ProductCard)
 
-  // console.log('state::', state)
+export const BundleBuilder = () => {
+  const {
+    dispatch,
+    state: { productTypes },
+  } = useProductsContext()
 
   const handleAddProductToBundle = (product: Product) => {
     dispatch({
@@ -22,9 +26,21 @@ export const BundleBuilder = () => {
     })
   }
 
-  const handleRemoveProductFromBundle = () => {
-    console.log('handleRemoveProductFromBundle')
-  }
+  const handleRemoveProductFromBundle = useCallback(
+    (item?: BundleItem) => {
+      if (!item) {
+        return
+      }
+
+      dispatch({
+        payload: {
+          bundleItem: item,
+        },
+        type: ProductActionTypes.RemoveProduct,
+      })
+    },
+    [dispatch],
+  )
 
   return (
     <div className={styles.wrapper}>
@@ -37,10 +53,10 @@ export const BundleBuilder = () => {
               {!!products.length && (
                 <div className={styles.cardWrapper}>
                   {products.map((product) => (
-                    <ProductCard
+                    <MemoizedProductCard
                       key={product.id}
                       onClickAdd={() => handleAddProductToBundle(product)}
-                      onClickRemove={() => handleRemoveProductFromBundle()}
+                      onClickRemove={handleRemoveProductFromBundle}
                       {...product}
                     />
                   ))}
@@ -51,7 +67,7 @@ export const BundleBuilder = () => {
       </section>
 
       <section className={styles.bundleColumn}>
-        <BundleList />
+        <BundleList onClickRemove={handleRemoveProductFromBundle} />
       </section>
     </div>
   )

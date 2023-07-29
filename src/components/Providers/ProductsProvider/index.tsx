@@ -1,6 +1,5 @@
 import React, { createContext, useReducer } from 'react'
 
-import { mockBundle } from 'mocks'
 import { productsReducer } from 'reducers'
 import { InitialStateType, ProductActions, ProductsContextType } from 'types'
 
@@ -9,7 +8,7 @@ interface ProductsProviderProps {
 }
 
 const initialState = {
-  bundle: mockBundle,
+  bundle: [],
   bundleItem: null,
   productTypes: [],
 }

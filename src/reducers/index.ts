@@ -6,8 +6,6 @@ export const productsReducer = (
 ): InitialStateType => {
   const { payload, type } = action
 
-  // console.log('productsReducer::', state.bundle)
-
   switch (type) {
     case ProductActionTypes.AddProduct:
       return {
@@ -19,7 +17,11 @@ export const productsReducer = (
     case ProductActionTypes.RemoveProduct:
       return {
         ...state,
-        bundle: [...state?.bundle?.filter((order) => order.id !== payload.id)],
+        bundle: [
+          ...state?.bundle?.filter(
+            (item) => item.bundleId !== payload?.bundleItem?.bundleId,
+          ),
+        ],
       }
 
     case ProductActionTypes.SetProducts:

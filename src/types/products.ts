@@ -7,13 +7,13 @@ type ActionMap<M extends { [index: string]: any }> = {
 }
 
 interface ProductPayload {
-  [ProductActionTypes.AddProduct]: InitialStateType
-  [ProductActionTypes.RemoveProduct]: InitialStateType
-  [ProductActionTypes.SetProducts]: InitialStateType
+  [ProductActionTypes.AddProduct]: Pick<InitialStateType, 'bundleItem'>
+  [ProductActionTypes.RemoveProduct]: Pick<InitialStateType, 'bundleItem'>
+  [ProductActionTypes.SetProducts]: Pick<InitialStateType, 'productTypes'>
 }
 
 export interface Product {
-  id: string
+  id?: string
   image: string
   name: string
 }
@@ -35,9 +35,9 @@ export enum ProductActionTypes {
 }
 
 export type InitialStateType = {
-  bundle?: BundleItem[]
-  bundleItem?: BundleItem | null
-  productTypes?: ProductTypes[]
+  bundle: BundleItem[]
+  bundleItem: BundleItem | null
+  productTypes: ProductTypes[]
 }
 
 export type ProductActions =

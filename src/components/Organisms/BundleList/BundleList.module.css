@@ -1,7 +1,15 @@
 .bundleList {
-  background-color: #fff;
-  height: 100px;
   left: 0;
   position: sticky;
-  top: calc(var(--dimension-navbar-height) + 32px);
+  top: calc(var(--dimension-navbar-height) + 24px);
+}
+
+.bundleListWrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.bundleListTitle {
+  margin-top: 0;
 }
