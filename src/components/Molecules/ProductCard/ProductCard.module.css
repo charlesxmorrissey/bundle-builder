@@ -1,0 +1,19 @@
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.cardTitle {
+  margin-top: 8px;
+}
+
+.cardImageWrapper {
+  padding: 16px 0;
+}
+
+.cardControls {
+  padding: 16px;
+}

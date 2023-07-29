@@ -1,0 +1,38 @@
+import type { AppProps } from 'next/app'
+import { Inter } from 'next/font/google'
+import Head from 'next/head'
+
+import PageLayout from 'components/Atoms/PageLayout'
+import { ProductsProvider } from 'components/Providers/ProductsProvider'
+
+import 'assets/styles/app.css'
+
+const inter = Inter({ subsets: ['latin'] })
+
+const App = ({ Component, pageProps }: AppProps) => (
+  <>
+    <Head>
+      <title>Lume Deodorant</title>
+      <meta content='Lume Deodorant' name='description' />
+      <meta
+        content='width=device-width, initial-scale=1, user-scalable=no'
+        name='viewport'
+      />
+      <link href='/favicon.ico' rel='icon' />
+    </Head>
+
+    <style global jsx>{`
+      :root {
+        --font-inter: ${inter.style.fontFamily};
+      }
+    `}</style>
+
+    <PageLayout>
+      <ProductsProvider>
+        <Component {...pageProps} />
+      </ProductsProvider>
+    </PageLayout>
+  </>
+)
+
+export default App
