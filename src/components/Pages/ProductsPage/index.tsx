@@ -13,12 +13,10 @@ const ProductsPage: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/api/products')
-      const results = await response.json()
+      const productTypes = await response.json()
 
       dispatch({
-        payload: {
-          productTypes: results,
-        },
+        payload: { productTypes },
         type: ProductActionTypes.SetProducts,
       })
     }

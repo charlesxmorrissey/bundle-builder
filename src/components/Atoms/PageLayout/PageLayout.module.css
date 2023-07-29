@@ -11,7 +11,7 @@
 .pageHeader {
   composes: pagePadding;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--color-surface-primary);
   box-shadow: var(--box-shadow-bottom);
   display: flex;
   height: var(--dimension-navbar-height);
@@ -36,7 +36,7 @@
 
 .pageContent {
   max-width: var(--dimension-max-width);
-  padding: var(--dimension-navbar-height) 0 32px;
+  padding: calc(var(--dimension-navbar-height) + var(--space-16)) 0 32px;
   width: 100%;
 }
 

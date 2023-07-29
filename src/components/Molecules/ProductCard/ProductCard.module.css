@@ -1,5 +1,5 @@
 .card {
-  background-color: #fff;
+  background-color: var(--color-surface-primary);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -16,4 +16,9 @@
 
 .cardControls {
   padding: 16px;
+}
+
+.btnIcon {
+  height: 24px;
+  width: 24px;
 }

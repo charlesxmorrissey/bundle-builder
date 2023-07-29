@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import { useMemo } from 'react'
 
+import AddIcon from 'assets/icons/add.svg'
+import RemoveIcon from 'assets/icons/remove.svg'
+import { Button, ButtonVariant } from 'components/Atoms/Button'
 import { MAX_BUNDLE_SIZE } from 'constant'
 import { useProductsContext } from 'hooks'
 import type { BundleItem, Product } from 'types'
-import { getItemById } from 'utils'
+import { getItemById, getItemCount } from 'utils'
 
 import styles from './ProductCard.module.css'
 
@@ -28,6 +31,7 @@ export const ProductCard = ({
   } = useProductsContext()
 
   const bundleItem = useMemo(() => getItemById(bundle, id), [id, bundle])
+  const bundleCount = useMemo(() => getItemCount(bundle, id), [bundle, id])
 
   return (
     <div className={styles.card}>
@@ -45,18 +49,23 @@ export const ProductCard = ({
 
       <div className={styles.cardControls}>
         {!!bundleItem && (
-          <button onClick={() => onClickRemove(bundleItem)} type='button'>
-            Remove
-          </button>
+          <Button
+            onClick={() => onClickRemove(bundleItem)}
+            variant={ButtonVariant.rounded}
+          >
+            <RemoveIcon className={styles.btnIcon} />
+          </Button>
         )}
 
-        <button
-          disabled={bundle.length === MAX_BUNDLE_SIZE}
+        {!!bundleCount && <p>{bundleCount}</p>}
+
+        <Button
+          isDisabled={bundle.length === MAX_BUNDLE_SIZE}
           onClick={onClickAdd}
-          type='button'
+          variant={ButtonVariant.rounded}
         >
-          Add
-        </button>
+          <AddIcon className={styles.btnIcon} />
+        </Button>
       </div>
     </div>
   )

@@ -1,7 +1,12 @@
+import { useEffect, useState } from 'react'
+
+import { Button, ButtonType, ButtonVariant } from 'components/Atoms/Button'
 import { BundleCard } from 'components/Molecules/BundleCard'
+import { MAX_BUNDLE_SIZE } from 'constant'
 import { useProductsContext } from 'hooks'
 import { mockBundle } from 'mocks'
 import type { BundleItem } from 'types'
+import { pluralize } from 'utils'
 
 import styles from './BundleList.module.css'
 
@@ -10,9 +15,23 @@ interface BundleListProps {
 }
 
 export const BundleList = ({ onClickRemove }: BundleListProps) => {
+  const [buttonText, setButtonText] = useState('')
   const {
     state: { bundle },
   } = useProductsContext()
+
+  useEffect(() => {
+    if (bundle.length === MAX_BUNDLE_SIZE) {
+      setButtonText('Add to cart')
+    } else {
+      setButtonText(
+        `Choose ${pluralize(
+          !bundle.length ? MAX_BUNDLE_SIZE : MAX_BUNDLE_SIZE - bundle.length,
+          'product',
+        )}`,
+      )
+    }
+  }, [bundle.length])
 
   return (
     <div className={styles.bundleList}>
@@ -27,6 +46,15 @@ export const BundleList = ({ onClickRemove }: BundleListProps) => {
           />
         ))}
       </div>
+
+      <Button
+        className={styles.bundleAddButton}
+        isDisabled={bundle.length !== MAX_BUNDLE_SIZE}
+        type={ButtonType.submit}
+        variant={ButtonVariant.primary}
+      >
+        <span>{buttonText}</span>
+      </Button>
     </div>
   )
 }

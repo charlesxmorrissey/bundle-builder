@@ -1,20 +1,14 @@
 .wrapper {
-  /* background: blueviolet; */
   display: flex;
   gap: 80px;
 }
 
 .productsColumn {
-  /* background: green; */
   flex: 2;
 }
 
 .sectionWrapper {
   margin-bottom: 32px;
-}
-
-.sectionTitle {
-  /* margin: 0 0 8px; */
 }
 
 .cardWrapper {
@@ -26,7 +20,6 @@
 .bundleColumn {
   display: block;
   flex: 1;
-  margin-top: 8px;
   max-width: 320px;
   position: relative;
 }

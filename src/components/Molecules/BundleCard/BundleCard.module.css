@@ -1,12 +1,47 @@
 .card {
+  align-items: center;
+  box-shadow: var(--box-shadow-bottom);
   display: flex;
+  padding: var(--space-8) 0;
+  position: relative;
+}
+
+.card:last-child {
+  box-shadow: none;
 }
 
 .cardImageWrapper {
   position: relative;
+  width: 100px;
+}
+
+.cardPlaceholderImageWrapper {
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
 }
 
 .cardImage {
   height: 100px;
-  width: 100%;
+  width: 100px;
+}
+
+.cardPlaceholderImageWrapper > .cardImage {
+  height: 93px;
+  width: 45px;
+}
+
+.cardTitlePlaceholder {
+  color: var(--color-gray-500);
+}
+
+.cardBtn {
+  inset: 0 0 auto auto;
+  position: absolute;
+}
+
+.cardIcon {
+  height: 24px;
+  width: 24px;
 }
