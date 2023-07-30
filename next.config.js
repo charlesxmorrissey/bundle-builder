@@ -2,7 +2,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, // true
+  reactStrictMode: true,
 
   webpack: (config) => {
     config.module.rules.push({
