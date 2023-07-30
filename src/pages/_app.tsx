@@ -14,10 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => (
     <Head>
       <title>Lume Deodorant</title>
       <meta content='Lume Deodorant' name='description' />
-      <meta
-        content='width=device-width, initial-scale=1, user-scalable=no'
-        name='viewport'
-      />
+      <meta content='width=device-width, initial-scale=1' name='viewport' />
       <link href='/favicon.ico' rel='icon' />
     </Head>
 

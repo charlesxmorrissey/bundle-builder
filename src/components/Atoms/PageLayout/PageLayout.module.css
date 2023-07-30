@@ -14,7 +14,7 @@
   background-color: var(--color-surface-primary);
   box-shadow: var(--box-shadow-bottom);
   display: flex;
-  height: var(--dimension-navbar-height);
+  height: var(--dimension-navbar-height-mobile);
   inset: 0;
   justify-content: center;
   position: fixed;
@@ -23,11 +23,12 @@
 }
 
 .logo {
-  height: 58px;
-  width: 80px;
+  height: 48px;
+  width: 70px;
 }
 
 .pageContainer {
+  composes: pagePadding;
   align-items: center;
   display: flex;
   flex: 1;
@@ -36,21 +37,35 @@
 
 .pageContent {
   max-width: var(--dimension-max-width);
-  padding: calc(var(--dimension-navbar-height) + var(--space-16)) 0 32px;
+  padding: calc(var(--dimension-navbar-height-mobile) + var(--space-10)) 0
+    var(--space-24);
   width: 100%;
 }
 
 .pageFooter {
   composes: pagePadding;
-  align-items: center;
-  background-color: var(--color-grey-900);
-  color: var(--color-grey-50);
+  background-color: var(--color-brand-purple);
+  color: var(--color-gray-0);
   display: flex;
   font-size: 14px;
-  height: 48px;
+  height: 200px;
+}
+
+.pageFooterContainer {
+  flex: 1;
+  padding: var(--space-24) 0;
 }
 
 @media (--medium-viewport) {
+  .pageHeader {
+    height: var(--dimension-navbar-height);
+  }
+
+  .logo {
+    height: 58px;
+    width: 80px;
+  }
+
   .pagePadding,
   .pageContainer {
     padding: 0 var(--space-32);
@@ -59,5 +74,10 @@
   .pageContainer {
     margin: 0 auto;
     width: 100%;
+  }
+
+  .pageContent {
+    padding: calc(var(--dimension-navbar-height) + var(--space-16)) 0
+      var(--space-32);
   }
 }

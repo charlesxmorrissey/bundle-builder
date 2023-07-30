@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import Image from 'next/image'
 
-import RemoveIcon from 'assets/icons/close.svg'
+import RemoveIcon from 'assets/icons/remove.svg'
 import { Button, ButtonVariant } from 'components/Atoms/Button'
 import type { BundleItem } from 'types'
 
@@ -26,11 +26,7 @@ export const BundleCard = ({
 
   return (
     <div className={styles.card}>
-      <div
-        className={classNames(styles.cardImageWrapper, {
-          [styles.cardPlaceholderImageWrapper]: isPlaceholder,
-        })}
-      >
+      <div className={styles.cardImageWrapper}>
         <Image
           alt={name}
           className={styles.cardImage}
@@ -40,19 +36,19 @@ export const BundleCard = ({
         />
       </div>
 
-      <h4
+      <h3
         className={classNames(styles.cardTitle, {
           [styles.cardTitlePlaceholder]: isPlaceholder,
         })}
       >
         {name}
-      </h4>
+      </h3>
 
       {!isPlaceholder && (
         <Button
           className={styles.cardBtn}
           onClick={() => onClickRemove({ bundleId, id, image, name })}
-          variant={ButtonVariant.unstyled}
+          variant={ButtonVariant.roundedSecondary}
         >
           <RemoveIcon className={styles.cardIcon} />
         </Button>

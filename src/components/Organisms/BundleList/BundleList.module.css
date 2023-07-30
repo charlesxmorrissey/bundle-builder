@@ -1,19 +1,52 @@
 .bundleList {
-  left: 0;
-  position: sticky;
-  top: calc(var(--dimension-navbar-height) + var(--space-32));
+  background-color: var(--color-surface-primary);
+  border-radius: var(--border-radius-6);
+  box-shadow: var(--box-shadow);
+}
+
+.bundleListTitle {
+  color: var(--color-brand-green);
+  display: none;
 }
 
 .bundleListWrapper {
-  background-color: var(--color-surface-primary);
-  border-radius: 4px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-  padding: 16px;
+  flex-direction: row;
+  gap: var(--space-16);
+  justify-content: center;
+  padding: var(--space-16) var(--space-16) 0;
 }
 
-.bundleAddButton {
+.bundleAddBtn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   width: 100%;
+}
+
+@media (--large-viewport) {
+  .bundleList {
+    background-color: transparent;
+    box-shadow: none;
+    left: 0;
+    position: sticky;
+    top: calc(var(--dimension-navbar-height) + var(--space-32));
+  }
+
+  .bundleListTitle {
+    display: block;
+  }
+
+  .bundleListWrapper {
+    background-color: var(--color-surface-primary);
+    border-radius: var(--border-radius-6);
+    box-shadow: var(--box-shadow);
+    flex-direction: column;
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+
+  .bundleAddBtn {
+    border-radius: var(--border-radius-6);
+  }
 }

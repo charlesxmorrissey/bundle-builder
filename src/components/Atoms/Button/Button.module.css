@@ -10,9 +10,12 @@
   height: 36px;
   justify-content: center;
   line-height: 1;
-  outline: none;
   padding: var(--space-12) var(--space-20);
-  transition: background-color var(--transition-timing-2);
+  transition: all var(--transition-timing-2);
+}
+
+.button > svg {
+  flex-shrink: 0;
 }
 
 .button:disabled {
@@ -20,34 +23,28 @@
   opacity: var(--opacity-disabled);
 }
 
-.default,
-.secondary {
-  color: var(--text-theme-dark);
-}
-
-.default {
-  background-color: var(--text-theme-light);
-  border-radius: var(--border-radius-4);
-  filter: drop-shadow(0 0 1px rgb(12 26 75 / 20%))
-    drop-shadow(0 1px 3px rgb(50 50 71 / 10%));
-  height: 26px;
-  padding: var(--space-8) var(--space-16);
-}
-
-.danger,
 .primary {
+  background-color: var(--color-solid-primary);
   color: var(--text-theme-light);
 }
 
-.danger {
-  background-color: var(--color-solid-danger);
-}
-
-.primary {
+.rounded {
   background-color: var(--color-solid-primary);
+  border-radius: 100%;
+  fill: var(--text-theme-light);
+  height: 32px;
+  padding: 0;
+  width: 32px;
 }
 
-.secondary {
+.rounded:disabled {
+  background-color: var(--color-gray-400);
+  cursor: not-allowed;
+  fill: currentcolor;
+}
+
+.roundedSecondary {
+  composes: rounded;
   background-color: var(--color-solid-secondary);
 }
 
@@ -59,17 +56,13 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .danger:hover {
-    @mixin backgroundLightness var(--color-solid-danger-hs),
-      var(--color-solid-danger-l), 8%;
-  }
-
+  .rounded:hover:not(:disabled),
   .primary:hover:not(:disabled) {
     background-color: var(--color-solid-primary-dark);
   }
 
-  .secondary:hover {
+  .roundedSecondary:hover:not(:disabled) {
     @mixin backgroundLightness var(--color-solid-secondary-hs),
-      var(--color-solid-secondary-l), 4%;
+      var(--color-solid-secondary-l), 8%;
   }
 }

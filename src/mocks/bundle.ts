@@ -10,7 +10,7 @@ export const mockBundle: BundleItem[] = [
   },
   {
     id: uuidv4(),
-    image: '/images/placeholder/placeholder-01.svg',
+    image: '/images/placeholder/placeholder-02.svg',
     name: 'Second selection',
   },
   {

@@ -27,15 +27,13 @@ export const BundleBuilder = () => {
   }
 
   const handleRemoveProductFromBundle = useCallback(
-    (item?: BundleItem) => {
-      if (!item) {
+    (bundleItem?: BundleItem) => {
+      if (!bundleItem) {
         return
       }
 
       dispatch({
-        payload: {
-          bundleItem: item,
-        },
+        payload: { bundleItem },
         type: ProductActionTypes.RemoveProduct,
       })
     },
@@ -52,11 +50,12 @@ export const BundleBuilder = () => {
 
               {!!products.length && (
                 <div className={styles.cardWrapper}>
-                  {products.map((product) => (
+                  {products.map((product, index) => (
                     <MemoizedProductCard
                       key={product.id}
                       onClickAdd={() => handleAddProductToBundle(product)}
                       onClickRemove={handleRemoveProductFromBundle}
+                      priority={!!(index <= 2)}
                       {...product}
                     />
                   ))}

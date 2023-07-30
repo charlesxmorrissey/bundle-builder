@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 
 import { productsReducer } from 'reducers'
 import { InitialStateType, ProductActions, ProductsContextType } from 'types'

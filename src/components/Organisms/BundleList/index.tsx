@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Button, ButtonType, ButtonVariant } from 'components/Atoms/Button'
+import { Button, ButtonType } from 'components/Atoms/Button'
 import { BundleCard } from 'components/Molecules/BundleCard'
 import { MAX_BUNDLE_SIZE } from 'constant'
 import { useProductsContext } from 'hooks'
@@ -48,10 +48,9 @@ export const BundleList = ({ onClickRemove }: BundleListProps) => {
       </div>
 
       <Button
-        className={styles.bundleAddButton}
+        className={styles.bundleAddBtn}
         isDisabled={bundle.length !== MAX_BUNDLE_SIZE}
         type={ButtonType.submit}
-        variant={ButtonVariant.primary}
       >
         <span>{buttonText}</span>
       </Button>

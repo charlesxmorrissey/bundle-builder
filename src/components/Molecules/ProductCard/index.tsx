@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import Image from 'next/image'
 import { useMemo } from 'react'
 
@@ -17,6 +18,7 @@ interface ProductCardProps {
   name: Product['name']
   onClickAdd: () => void
   onClickRemove: (item?: BundleItem) => void
+  priority?: boolean
 }
 
 export const ProductCard = ({
@@ -25,6 +27,7 @@ export const ProductCard = ({
   name,
   onClickAdd,
   onClickRemove,
+  priority = false,
 }: ProductCardProps) => {
   const {
     state: { bundle },
@@ -34,7 +37,11 @@ export const ProductCard = ({
   const bundleCount = useMemo(() => getItemCount(bundle, id), [bundle, id])
 
   return (
-    <div className={styles.card}>
+    <div
+      className={classNames(styles.card, {
+        [styles.cardDisabled]: bundle.length === MAX_BUNDLE_SIZE && !bundleItem,
+      })}
+    >
       <h3 className={styles.cardTitle}>{name}</h3>
 
       <div className={styles.cardImageWrapper}>
@@ -42,6 +49,7 @@ export const ProductCard = ({
           alt={name}
           className={styles.cardImage}
           height={200}
+          priority={priority}
           src={image}
           width={200}
         />
@@ -51,20 +59,25 @@ export const ProductCard = ({
         {!!bundleItem && (
           <Button
             onClick={() => onClickRemove(bundleItem)}
-            variant={ButtonVariant.rounded}
+            variant={ButtonVariant.roundedSecondary}
           >
-            <RemoveIcon className={styles.btnIcon} />
+            <RemoveIcon
+              aria-label='Remove product'
+              className={styles.cardBtnIcon}
+            />
           </Button>
         )}
 
-        {!!bundleCount && <p>{bundleCount}</p>}
+        {!!bundleCount && (
+          <span className={styles.cardCount}>{bundleCount}</span>
+        )}
 
         <Button
           isDisabled={bundle.length === MAX_BUNDLE_SIZE}
           onClick={onClickAdd}
           variant={ButtonVariant.rounded}
         >
-          <AddIcon className={styles.btnIcon} />
+          <AddIcon aria-label='Add product' className={styles.cardBtnIcon} />
         </Button>
       </div>
     </div>

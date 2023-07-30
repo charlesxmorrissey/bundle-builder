@@ -3,11 +3,9 @@ import classNames from 'classnames'
 import styles from './Button.module.css'
 
 export enum ButtonVariant {
-  danger = 'danger',
-  default = 'default',
   primary = 'primary',
   rounded = 'rounded',
-  secondary = 'secondary',
+  roundedSecondary = 'roundedSecondary',
   unstyled = 'unstyled',
 }
 
@@ -30,9 +28,9 @@ export const Button = ({
   children,
   className = '',
   isDisabled = false,
-  onClick,
+  onClick = undefined,
   type = ButtonType.button,
-  variant = ButtonVariant.default,
+  variant = ButtonVariant.primary,
   ...rest
 }: ButtonProps) => (
   <button
@@ -40,7 +38,7 @@ export const Button = ({
       [className]: className,
     })}
     disabled={isDisabled}
-    onClick={onClick ? onClick : undefined}
+    onClick={onClick}
     type={type}
     {...rest}
   >
