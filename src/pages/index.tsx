@@ -1,11 +1,14 @@
 import type { NextPage } from 'next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
+import { LoadingIndicator } from 'components/Atoms/LoadingIndicator'
 import { BundleBuilder } from 'components/Organisms/BundleBuilder'
 import { useProductsContext } from 'hooks'
 import { ProductActionTypes } from 'types'
 
 const ProductsPage: NextPage = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
   const { dispatch } = useProductsContext()
 
   useEffect(() => {
@@ -17,12 +20,14 @@ const ProductsPage: NextPage = () => {
         payload: { productTypes },
         type: ProductActionTypes.SetProducts,
       })
+
+      setIsLoading(false)
     }
 
     fetchData()
   }, [dispatch])
 
-  return <BundleBuilder />
+  return <>{isLoading ? <LoadingIndicator /> : <BundleBuilder />}</>
 }
 
 export default ProductsPage
