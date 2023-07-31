@@ -12,7 +12,6 @@
   border: 8px solid var(--color-brand-green);
   border-color: var(--color-brand-green) transparent transparent;
   border-radius: 50%;
-  box-sizing: border-box;
   display: block;
   height: 64px;
   margin: var(--space-8);
