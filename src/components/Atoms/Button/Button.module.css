@@ -7,15 +7,10 @@
   display: flex;
   font-size: 14px;
   font-weight: var(--font-weight-semibold);
-  height: 36px;
   justify-content: center;
   line-height: 1;
   padding: var(--space-12) var(--space-20);
   transition: all var(--transition-timing-2);
-}
-
-.button > svg {
-  flex-shrink: 0;
 }
 
 .button:disabled {
@@ -23,9 +18,22 @@
   opacity: var(--opacity-disabled);
 }
 
+.buttonContent {
+  padding: var(--space-16);
+}
+
+.buttonContent > svg {
+  flex-shrink: 0;
+}
+
 .primary {
   background-color: var(--color-solid-primary);
   color: var(--text-theme-light);
+  height: 36px;
+}
+
+.primary > .buttonContent {
+  padding: var(--space-8);
 }
 
 .rounded {

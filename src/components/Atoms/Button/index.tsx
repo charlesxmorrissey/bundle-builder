@@ -42,6 +42,6 @@ export const Button = ({
     type={type}
     {...rest}
   >
-    {children}
+    <span className={styles.buttonContent}>{children}</span>
   </button>
 )

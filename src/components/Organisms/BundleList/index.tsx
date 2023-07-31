@@ -52,7 +52,7 @@ export const BundleList = ({ onClickRemove }: BundleListProps) => {
         isDisabled={bundle.length !== MAX_BUNDLE_SIZE}
         type={ButtonType.submit}
       >
-        <span>{buttonText}</span>
+        {buttonText}
       </Button>
     </div>
   )
