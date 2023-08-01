@@ -15,6 +15,7 @@
 .bundleColumn {
   inset: auto var(--space-16) var(--space-16);
   position: sticky;
+  z-index: 1;
 }
 
 @media (--medium-viewport) {

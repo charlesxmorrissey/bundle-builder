@@ -24,8 +24,18 @@ export const productsReducer = (
         ],
       }
 
+    case ProductActionTypes.RequestProducts:
+      return {
+        ...state,
+        isLoading: payload.isLoading,
+      }
+
     case ProductActionTypes.SetProducts:
-      return { ...state, productTypes: payload.productTypes }
+      return {
+        ...state,
+        isLoading: false,
+        productTypes: payload.productTypes,
+      }
 
     default:
       return state

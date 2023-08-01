@@ -1,3 +1,5 @@
+@import '../../../assets/styles/animations.css';
+
 .card {
   background-color: var(--color-surface-primary);
   border-radius: var(--border-radius-6);
@@ -25,6 +27,30 @@
 
 .cardImageWrapper {
   padding: var(--space-16) 0;
+}
+
+.cardImageWrapperLoading {
+  max-width: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.cardImageWrapperLoading::before {
+  content: '';
+  display: block;
+  padding-top: calc((1 / 1) * 100%);
+  width: 100%;
+}
+
+.cardImageWrapperLoading > span {
+  height: calc(100% - var(--space-32));
+  inset: 50% auto auto 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.cardImage {
+  animation: fade-in var(--transition-timing-3) ease 1 backwards;
 }
 
 .cardControls {

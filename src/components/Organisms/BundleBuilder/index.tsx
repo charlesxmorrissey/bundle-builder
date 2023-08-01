@@ -8,13 +8,14 @@ import { Product, ProductActionTypes } from 'types'
 import type { BundleItem } from 'types'
 
 import styles from './BundleBuilder.module.css'
+import { SkeletonList } from './SkeletonList'
 
 const MemoizedProductCard = memo(ProductCard)
 
 export const BundleBuilder = () => {
   const {
     dispatch,
-    state: { productTypes },
+    state: { isLoading, productTypes },
   } = useProductsContext()
 
   const handleAddProductToBundle = (product: Product) => {
@@ -43,7 +44,7 @@ export const BundleBuilder = () => {
   return (
     <div className={styles.wrapper}>
       <section className={styles.productsColumn}>
-        {!!productTypes?.length &&
+        {!isLoading && !!productTypes?.length ? (
           productTypes.map(({ id, products, type }) => (
             <div className={styles.sectionWrapper} key={id}>
               <h2 className={styles.sectionTitle}>{type}</h2>
@@ -62,7 +63,10 @@ export const BundleBuilder = () => {
                 </div>
               )}
             </div>
-          ))}
+          ))
+        ) : (
+          <SkeletonList />
+        )}
       </section>
 
       <section className={styles.bundleColumn}>

@@ -10,6 +10,7 @@ interface ProductsProviderProps {
 const initialState = {
   bundle: [],
   bundleItem: null,
+  isLoading: true,
   productTypes: [],
 }
 
