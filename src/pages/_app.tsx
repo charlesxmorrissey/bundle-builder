@@ -5,6 +5,7 @@ import Head from 'next/head'
 import PageLayout from 'components/Atoms/PageLayout'
 import { ProductsProvider } from 'components/Providers/ProductsProvider'
 
+import 'react-loading-skeleton/dist/skeleton.css'
 import 'assets/styles/app.css'
 
 const inter = Inter({ subsets: ['latin'] })
