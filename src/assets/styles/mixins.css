@@ -1,3 +1,7 @@
+/*
+ * Base mixins
+ * ============================================================ */
+
 @define-mixin backgroundLightness $color, $lightness, $value {
   background-color: hsl($color calc($lightness - $value));
 }

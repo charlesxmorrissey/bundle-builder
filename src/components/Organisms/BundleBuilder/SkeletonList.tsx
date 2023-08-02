@@ -1,7 +1,7 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 import { SkeletonCard } from 'components/Molecules/ProductCard/SkeletonCard'
-import { SKELETON_THEME_COLOR } from 'constant'
+import { SKELETON_THEME } from 'constant'
 
 import styles from './BundleBuilder.module.css'
 
@@ -10,8 +10,8 @@ const sectionCount = 2
 
 export const SkeletonList = () => (
   <SkeletonTheme
-    baseColor={SKELETON_THEME_COLOR.baseColor}
-    highlightColor={SKELETON_THEME_COLOR.highlightColor}
+    baseColor={SKELETON_THEME.baseColor}
+    highlightColor={SKELETON_THEME.highlightColor}
   >
     {Array.from({ length: sectionCount }, (_, index) => (
       <div className={styles.sectionWrapper} key={`section-${index}`}>

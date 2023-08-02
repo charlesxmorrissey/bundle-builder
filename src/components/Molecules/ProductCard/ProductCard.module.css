@@ -1,4 +1,4 @@
-@import '../../../assets/styles/animations.css';
+@import 'animations.css';
 
 .card {
   background-color: var(--color-surface-primary);
@@ -50,7 +50,7 @@
 }
 
 .cardImage {
-  animation: fade-in var(--transition-timing-3) ease 1 backwards;
+  animation: fade-in var(--transition-timing-5) ease 1 backwards;
 }
 
 .cardControls {
