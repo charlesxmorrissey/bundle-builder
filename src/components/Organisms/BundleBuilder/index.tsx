@@ -45,25 +45,29 @@ export const BundleBuilder = () => {
     <div className={styles.wrapper}>
       <section className={styles.productsColumn}>
         {!isLoading && !!productTypes?.length ? (
-          productTypes.map(({ id, products, type }) => (
-            <div className={styles.sectionWrapper} key={id}>
-              <h2 className={styles.sectionTitle}>{type}</h2>
+          productTypes.map(({ id, products, type }, index) => {
+            const imagePriority = !!(index === 0) ?? false
 
-              {!!products.length && (
-                <div className={styles.cardWrapper}>
-                  {products.map((product, index) => (
-                    <MemoizedProductCard
-                      key={product.id}
-                      onClickAdd={() => handleAddProductToBundle(product)}
-                      onClickRemove={handleRemoveProductFromBundle}
-                      priority={!!(index <= 2)}
-                      {...product}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))
+            return (
+              <div className={styles.sectionWrapper} key={id}>
+                <h2 className={styles.sectionTitle}>{type}</h2>
+
+                {!!products.length && (
+                  <div className={styles.cardWrapper}>
+                    {products.map((product) => (
+                      <MemoizedProductCard
+                        key={product.id}
+                        onClickAdd={() => handleAddProductToBundle(product)}
+                        onClickRemove={handleRemoveProductFromBundle}
+                        priority={imagePriority}
+                        {...product}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })
         ) : (
           <SkeletonList />
         )}
