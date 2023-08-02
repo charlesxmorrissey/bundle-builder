@@ -67,10 +67,12 @@
   --transition-timing-1: 100ms;
   --transition-timing-2: 200ms;
   --transition-timing-3: 300ms;
+  --transition-timing-4: 400ms;
+  --transition-timing-5: 500ms;
 }
 
 /*
- * Media queries
+ * Base media queries
  * ============================================================ */
 
 @custom-media --small-viewport (min-width: 481px);

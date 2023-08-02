@@ -19,6 +19,11 @@
 }
 
 @media (--medium-viewport) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   .cardWrapper {
     gap: var(--space-20);
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -29,13 +34,6 @@
     inset: auto auto var(--space-32);
     margin: 0 auto;
     width: 364px;
-  }
-}
-
-@media (--medium-viewport) {
-  .wrapper {
-    display: flex;
-    flex-direction: column;
   }
 }
 
