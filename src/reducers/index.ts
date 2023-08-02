@@ -10,8 +10,10 @@ export const productsReducer = (
     case ProductActionTypes.AddProduct:
       return {
         ...state,
-        // @ts-ignore
-        bundle: [...state.bundle, payload.bundleItem],
+        bundle: payload.bundleItem
+          ? [...state.bundle, payload.bundleItem]
+          : state.bundle,
+        bundleItem: payload.bundleItem,
       }
 
     case ProductActionTypes.RemoveProduct:

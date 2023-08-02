@@ -38,7 +38,7 @@ export enum ProductActionTypes {
 
 export type InitialStateType = {
   bundle: BundleItem[]
-  bundleItem: BundleItem | null
+  bundleItem?: BundleItem | null
   isLoading: boolean
   productTypes: ProductTypes[]
 }
