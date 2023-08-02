@@ -8,12 +8,12 @@ export const productsReducer = (
 
   switch (type) {
     case ProductActionTypes.AddProduct:
+      const { bundleItem } = payload
+
       return {
         ...state,
-        bundle: payload.bundleItem
-          ? [...state.bundle, payload.bundleItem]
-          : state.bundle,
-        bundleItem: payload.bundleItem,
+        bundle: bundleItem ? [...state.bundle, bundleItem] : state.bundle,
+        bundleItem,
       }
 
     case ProductActionTypes.RemoveProduct:
@@ -27,16 +27,20 @@ export const productsReducer = (
       }
 
     case ProductActionTypes.RequestProducts:
+      const { isLoading } = payload
+
       return {
         ...state,
-        isLoading: payload.isLoading,
+        isLoading,
       }
 
     case ProductActionTypes.SetProducts:
+      const { productTypes } = payload
+
       return {
         ...state,
         isLoading: false,
-        productTypes: payload.productTypes,
+        productTypes,
       }
 
     default:
