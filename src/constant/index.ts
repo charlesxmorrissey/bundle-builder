@@ -10,6 +10,6 @@ export const METADATA: NameValuePairs = {
 }
 
 export const SKELETON_THEME: NameValuePairs = {
-  baseColor: '#e2e8f0',
-  highlightColor: '#edf2f7',
+  baseColor: 'var(--color-gray-300)',
+  highlightColor: 'var(--color-gray-200)',
 }

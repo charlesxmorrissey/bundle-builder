@@ -6,7 +6,7 @@ import styles from './ProductCard.module.css'
 export const SkeletonCard = () => (
   <div className={styles.card}>
     <h3 className={styles.cardTitle}>
-      <Skeleton height={16} inline width={100} />
+      <Skeleton inline width={100} />
     </h3>
 
     <div

@@ -16,7 +16,7 @@ export const SkeletonList = () => (
     {Array.from({ length: sectionCount }, (_, index) => (
       <div className={styles.sectionWrapper} key={`section-${index}`}>
         <h2 className={styles.sectionTitle}>
-          <Skeleton height={24} width={260} />
+          <Skeleton width={260} />
         </h2>
 
         <div className={styles.cardWrapper}>
