@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 
 import { Button, ButtonType } from 'components/Atoms/Button'
 import { BundleCard } from 'components/Molecules/BundleCard'
@@ -13,6 +13,8 @@ import styles from './BundleList.module.css'
 interface BundleListProps {
   onClickRemove: (item: BundleItem) => void
 }
+
+const MemoizedBundleCard = memo(BundleCard)
 
 export const BundleList = ({ onClickRemove }: BundleListProps) => {
   const [buttonText, setButtonText] = useState('')
@@ -39,7 +41,7 @@ export const BundleList = ({ onClickRemove }: BundleListProps) => {
 
       <div className={styles.bundleListWrapper}>
         {mockBundle.map((item, index) => (
-          <BundleCard
+          <MemoizedBundleCard
             key={`item-${index}`}
             onClickRemove={onClickRemove}
             {...(bundle?.[index] ?? item)}
